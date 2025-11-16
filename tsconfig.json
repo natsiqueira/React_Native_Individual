@@ -1,12 +1,19 @@
 {
+  // ** IMPORTANTE: 'extends' deve ser o primeiro item para carregar a configuração base do Expo
   "extends": "expo/tsconfig.base",
+  
   "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "jsx": "react-native",
     "strict": true,
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "lib": ["es2020"],
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true
   },
   "include": [
     "**/*.ts",
