@@ -63,9 +63,6 @@ cd React_Native_Individual
 Instale todas as bibliotecas necessárias listadas no package.json:
 
 npm install
-# ou, se preferir usar Yarn
-yarn install
-
 
 3. Iniciar o Servidor de Desenvolvimento
 
@@ -73,10 +70,9 @@ Para iniciar o Metro Bundler e rodar o projeto, use o comando:
 
 npx expo start --clear
 
-
 O Expo irá gerar um QR Code no seu terminal. Você pode escanear este código com o aplicativo Expo Go em seu celular (Android ou iOS) para ver o projeto em tempo real.
 
-4. Estrutura de Pastas
+4. Estrutura de Pastas (clicando em editar, você irá conseguir visualizar esse arquivo no modo correto)
 
 A estrutura do projeto está organizada para separar responsabilidades:
 
