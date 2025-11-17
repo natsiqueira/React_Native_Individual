@@ -1,13 +1,13 @@
 // src/navigation/index.tsx
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import React from 'react';
 
 // Importar as nossas duas telas
-import Login from '../pages/Login';
 import Home from '../pages/Home';
+import Login from '../pages/Login';
 
-// Definir o tipo das rotas
+
 export type RootStackParamList = {
   Login: undefined;
   Home: undefined;
@@ -19,9 +19,9 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Stack.Navigator 
-        initialRouteName="Login" // A primeira tela é sempre o Login
+        initialRouteName="Login" 
         screenOptions={{ 
-          headerShown: false // O Spotify não usa o header nativo
+          headerShown: false 
         }}
       >
         <Stack.Screen name="Login" component={Login} />
