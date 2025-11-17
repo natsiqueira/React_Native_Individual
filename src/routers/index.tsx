@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import { MiniPlayer } from '../components/MiniPlayer';
 import { Home } from '../pages/Home/index';
 import { Library } from '../pages/Library/index';
+
 import { Login } from '../pages/Login/index';
 import { Search } from '../pages/Search/index';
 
