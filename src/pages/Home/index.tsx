@@ -14,11 +14,13 @@ const PodcastImage = require('../../assets/images/podcast_do_dia.jpg');
 const DescobrirImage = require('../../assets/images/descobrir.jpg');
 const TreinoImage = require('../../assets/images/treino.jpg');
 
+
+const filters = ['Tudo', 'Música', 'Podcasts'];
+
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   'TabRoutes' 
 >;
-const filters = ['Música', 'Podcasts & Programas', 'Novidades', 'Chill', 'Treino'];
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +50,6 @@ const styles = StyleSheet.create({
   iconButton: {
     marginLeft: 20,
   },
-
   filterBar: {
     paddingHorizontal: 16,
     marginBottom: 20,
@@ -70,9 +71,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   filterTextActive: {
-    color: '#000',
+    color: '#000', 
   },
-
   sectionTitle: {
     color: 'white',
     fontSize: 20,
@@ -81,7 +81,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   horizontalScroll: {
-
   },
   logoutButton: {
     marginTop: 40,
@@ -97,13 +96,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
 const HomeHeader = () => (
   <View style={styles.header}>
     <Text style={styles.welcomeTextHeader}>Boa noite</Text>
     
     <View style={styles.iconGroup}>
-
       <TouchableOpacity style={styles.iconButton}>
         <Ionicons name="notifications-outline" size={24} color="white" />
       </TouchableOpacity>
@@ -126,6 +123,10 @@ export const Home = () => {
   const handleLogout = () => {
     navigation.replace('Login'); 
   }
+
+  const showMusic = activeFilter === 'Tudo' || activeFilter === 'Música';
+  const showPodcasts = activeFilter === 'Tudo' || activeFilter === 'Podcasts';
+
 
   return (
     <View style={styles.container}>
@@ -161,18 +162,18 @@ export const Home = () => {
       
       <ScrollView contentContainerStyle={styles.scrollContent}>
         
-        {activeFilter === 'Música' && (
+        {showMusic && (
           <>
             <Text style={styles.sectionTitle}>Tocados recentemente</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
               <Card 
-                title="Ferrugem" 
+                title="Daily Mix 1" 
                 description="Apenas para você" 
                 imageSource={DailyMixImage} 
               />
               <Card 
-                title="Sorriso Maroto" 
-                description="Playlist" 
+                title="Hip Hop Revoada" 
+                description="Playlist da Comunidade" 
                 imageSource={HipHopImage} 
               />
               <Card 
@@ -186,10 +187,24 @@ export const Home = () => {
                 imageSource={FavoritasImage} 
               />
             </ScrollView>
+
+            <Text style={styles.sectionTitle}>Pule o tédio</Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
+              <Card 
+                title="Treino" 
+                description="Batidas fortes" 
+                imageSource={TreinoImage} 
+              />
+              <Card 
+                title="Descobrir" 
+                description="Músicas novas toda semana" 
+                imageSource={DescobrirImage} 
+              />
+            </ScrollView>
           </>
         )}
 
-        {activeFilter === 'Podcasts & Programas' && (
+        {showPodcasts && (
           <>
             <Text style={styles.sectionTitle}>Seus Podcasts Ativos</Text>
             <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
@@ -199,32 +214,14 @@ export const Home = () => {
                 imageSource={PodcastImage} 
               />
               <Card 
-                title="Descobrir" 
-                description="Novos programas" 
-                imageSource={DescobrirImage} 
+                title="Novos Episódios" 
+                description="Atualizado diariamente" 
+                imageSource={DescobrirImage}
               />
             </ScrollView>
           </>
         )}
         
-        <Text style={styles.sectionTitle}>Pule o tédio</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
-          <Card 
-            title="Podcast do Dia" 
-            description="Histórias incríveis" 
-            imageSource={PodcastImage} 
-          />
-          <Card 
-            title="Descobrir" 
-            description="Músicas novas toda semana" 
-            imageSource={DescobrirImage} 
-          />
-          <Card 
-            title="Treino" 
-            description="Batidas fortes" 
-            imageSource={TreinoImage} 
-          />
-        </ScrollView>
         
         <TouchableOpacity 
           style={styles.logoutButton} 
